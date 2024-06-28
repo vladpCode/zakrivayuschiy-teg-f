@@ -14,6 +14,7 @@
 
 */
 
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -75,8 +76,11 @@
 .header-title {
   font-size: clamp(3.063rem, 2.71rem + 1.502vw, 4.063rem);
   font-weight: 400;
+  text-decoration: none;
 }
-
+.header-title:focus{
+  outline:none;
+}
 .header-subtitle {
   font-size: clamp(0.875rem, 0.677rem + 0.845vw, 1.438rem);
   font-weight: 400;
@@ -232,21 +236,23 @@
   align-items: center;
   gap: 4px;
   position: relative;
-  padding-inline-start:19px ;
+  /* padding-inline-start:19px ; */
+  margin-block-end: 50px;
 }
 
 
 .floppy-svg{
-  height: 28px;
-  width: 28px;
+  height: 30px;
+  width: 30px;
   color: var(--button-text-color);
-  padding-block-start:5px;
+  margin-block-start:10px;
+  margin-inline-start:10px;
   mix-blend-mode: difference;
 }
 
 @media (max-width: 375px){
   .header-block {
-    width: 375px;
+
     height: 327px;
     padding-block-start: 120px;
     padding-block-end: 25px;
@@ -267,31 +273,42 @@
   }
 
   .button__text {
-    padding-block: 10px ;
+    margin-block-start: -5px;
+    padding-inline-end: 7px;
   }
   .save-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0px;
-    padding-block-start: 15px;
     height: 80px;
     width: 306px;
+
   }
 
   .floppy-svg {
-    height: 28px;
-    width: 28px;
-    padding: 0;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    margin-block-start: 15px;
   }
 
   .floppy-image {
-    width:28px;
-    height:28px;
+    width:100%;
+    height:100%;
     padding-inline-start: 0;
-    padding-block-start: 0;
   }
 
+}
+
+@media (max-width:700px) {
+  .header-block{
+    width: 100vw;
+  }
+  .card-image,
+  .card-item{
+    width: 100%;
+  }
 }
 
 .theme-menu__button:disabled {
@@ -326,7 +343,8 @@
 }
 
 .card__like-button:focus,
-.card__icon-button:focus {
+.card__icon-button:focus,
+.dialog-button:focus {
   outline: none;
 }
 
@@ -395,11 +413,22 @@
   height: 38px;
   display: flex;
   justify-content: center;
-  padding-inline: 0;
+  margin-inline-start: 10px;
+  margin-block-end: 0;
 }
 
 dialog::backdrop{
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.card__like-button,
+.save-button,
+.dialog-button{
+  transition: box-shadow 0.3s;
+}
 
+.card__like-button:focus-visible,
+.save-button:focus-visible,
+.dialog-button:focus-visible{
+  box-shadow: 2px 2px var(--accent-color);
+}
